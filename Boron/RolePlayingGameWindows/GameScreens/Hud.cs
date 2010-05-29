@@ -119,13 +119,13 @@ namespace RolePlaying
             ContentManager content = screenManager.Game.Content;
 
             backgroundHudTexture =
-                content.Load<Texture2D>(@"Textures\HUD\HudBkgd");
+                content.Load<Texture2D>(@"Textures\HUD\lowerthird");
             topHudTexture =
                 content.Load<Texture2D>(@"Textures\HUD\CombatStateInfoStrip");
             activeCharInfoTexture =
-                content.Load<Texture2D>(@"Textures\HUD\PlankActive");
+                content.Load<Texture2D>(@"Textures\HUD\metalcontainer2");
             inActiveCharInfoTexture =
-                content.Load<Texture2D>(@"Textures\HUD\PlankInActive");
+                content.Load<Texture2D>(@"Textures\HUD\metalcontainer2");
             cantUseCharInfoTexture =
                 content.Load<Texture2D>(@"Textures\HUD\PlankCantUse");
             selectionBracketTexture =
@@ -339,7 +339,7 @@ namespace RolePlaying
             {
                 color = activeNameColor;
 
-                spriteBatch.Draw(activeCharInfoTexture, position, Color.White);
+                spriteBatch.Draw(activeCharInfoTexture, new Rectangle(0, 0, 205, 138), Color.White);
 
                 // Draw Brackets
                 if ((CombatEngine.HighlightedCombatant == player) && !player.IsTurnTaken)
@@ -362,7 +362,7 @@ namespace RolePlaying
             else if (plankState == PlankState.InActive)
             {
                 color = inActiveNameColor;
-                spriteBatch.Draw(inActiveCharInfoTexture, position, Color.White);
+                spriteBatch.Draw(inActiveCharInfoTexture, new Rectangle(0, 0, 205, 138), Color.White);
             }
             else
             {
@@ -439,12 +439,12 @@ namespace RolePlaying
             {
                 color = activeNameColor;
 
-                spriteBatch.Draw(activeCharInfoTexture, position, Color.White);
+                spriteBatch.Draw(activeCharInfoTexture, new Rectangle(10, (int)backgroundHudPosition.Y +5, 300, 190), Color.White);
             }
             else if (plankState == PlankState.InActive)
             {
                 color = inActiveNameColor;
-                spriteBatch.Draw(inActiveCharInfoTexture, position, Color.White);
+                spriteBatch.Draw(inActiveCharInfoTexture, new Rectangle(0, 0, 205, 138), Color.White);
             }
             else
             {

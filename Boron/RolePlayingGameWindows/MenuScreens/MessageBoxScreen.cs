@@ -84,9 +84,9 @@ namespace RolePlaying
         {
             ContentManager content = ScreenManager.Game.Content;
 
-            backgroundTexture = content.Load<Texture2D>(@"Textures\MainMenu\Confirm");
-            backTexture = content.Load<Texture2D>(@"Textures\Buttons\BButton");
-            selectTexture = content.Load<Texture2D>(@"Textures\Buttons\AButton");
+            backgroundTexture = content.Load<Texture2D>(@"Textures\MainMenu\confirm3");
+            backTexture = content.Load<Texture2D>(@"Textures\Buttons\BButton2");
+            selectTexture = content.Load<Texture2D>(@"Textures\Buttons\AButton2");
             loadingBlackTexture =
                 content.Load<Texture2D>(@"Textures\GameScreens\FadeScreen");
 
@@ -158,6 +158,8 @@ namespace RolePlaying
 
             spriteBatch.Draw(loadingBlackTexture, loadingBlackTextureDestination,
                 Color.White);
+
+            //spriteBatch.Draw(backgroundTexture, new Rectangle(360, 240, 600, 500), Color.White);
             spriteBatch.Draw(backgroundTexture, backgroundPosition, Color.White);
             spriteBatch.Draw(backTexture, backPosition, Color.White);
             spriteBatch.Draw(selectTexture, selectPosition, Color.White);
@@ -169,9 +171,9 @@ namespace RolePlaying
                 selectPosition.X - Fonts.ButtonNamesFont.MeasureString("Yes").X,
                 selectPosition.Y + 5), Color.White);
             spriteBatch.DrawString(Fonts.HeaderFont, "Confirmation", confirmPosition,
-                Fonts.CountColor);
+                Color.White);
             spriteBatch.DrawString(Fonts.GearInfoFont, message, messagePosition,
-                Fonts.CountColor);
+                Color.White);
 
             spriteBatch.End();
         }

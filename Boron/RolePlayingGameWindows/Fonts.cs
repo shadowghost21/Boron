@@ -61,7 +61,7 @@ namespace RolePlaying
 
 
         private static SpriteFont gearInfoFont;
-        public static SpriteFont GearInfoFont
+        public static SpriteFont GearInfoFont 
         {
             get { return gearInfoFont; }
         }
@@ -112,6 +112,7 @@ namespace RolePlaying
         public static readonly Color MenuSelectedColor = new Color(248, 218, 127);
 
 
+
         #endregion
 
 
@@ -130,14 +131,14 @@ namespace RolePlaying
             }
 
             // load each font from the content pipeline
-            buttonNamesFont = contentManager.Load<SpriteFont>("Fonts/ButtonNamesFont");
-            captionFont = contentManager.Load<SpriteFont>("Fonts/CaptionFont");
+            buttonNamesFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
+            captionFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
             damageFont = contentManager.Load<SpriteFont>("Fonts/DamageFont");
             debugFont = contentManager.Load<SpriteFont>("Fonts/DebugFont");
-            descriptionFont = contentManager.Load<SpriteFont>("Fonts/DescriptionFont");
-            gearInfoFont = contentManager.Load<SpriteFont>("Fonts/GearInfoFont");
-            headerFont = contentManager.Load<SpriteFont>("Fonts/HeaderFont");
-            hudDetailFont = contentManager.Load<SpriteFont>("Fonts/HudDetailFont");
+            descriptionFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
+            gearInfoFont = contentManager.Load<SpriteFont>(@"Fonts\bodyFont");
+            headerFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
+            hudDetailFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
             playerNameFont = contentManager.Load<SpriteFont>("Fonts/PlayerNameFont");
             playerStatisticsFont =
                 contentManager.Load<SpriteFont>("Fonts/PlayerStatisticsFont");

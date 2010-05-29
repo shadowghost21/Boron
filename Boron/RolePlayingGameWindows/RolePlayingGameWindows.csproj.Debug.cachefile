@@ -1004,6 +1004,13 @@ Content\Textures\Spells\Scroll.xnb
 Content\Textures\Spells\SmallIcon.xnb
 Content\Video\intro.xnb
 Content\Fonts\copperPlate.xnb
+Content\Textures\MainMenu\MetalBase0069_L.xnb
+Content\Textures\Buttons\AButton2.xnb
+Content\Textures\Buttons\BButton2.xnb
+Content\Fonts\bodyFont.xnb
+Content\Textures\MainMenu\confirm3.xnb
+Content\Textures\HUD\lowerthird.xnb
+Content\Textures\HUD\metalcontainer2.xnb
 Content\Video\intro.wmv
 Content\Audio\RPGAudio.xgs
 Content\Audio\Wave Bank.xwb
