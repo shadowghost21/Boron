@@ -7,7 +7,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RolePlayingGameProcessors</RootNamespace>
     <AssemblyName>RolePlayingGameProcessors</AssemblyName>
-    <XnaFrameworkVersion>v3.0</XnaFrameworkVersion>
+    <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -96,9 +96,9 @@
     <Compile Include="WorldObjectWriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Xna.Framework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using RolePlayingGameData;
 using Microsoft.Xna.Framework.GamerServices;
+using RolePlaying.MenuScreens;
 #endregion
 
 namespace RolePlaying
@@ -69,7 +70,8 @@ namespace RolePlaying
 
             TileEngine.Viewport = graphics.GraphicsDevice.Viewport;
 
-            screenManager.AddScreen(new MainMenuScreen());
+            screenManager.AddScreen(new IntroScreen());
+            //screenManager.AddScreen(new MainMenuScreen());
         }
 
 
@@ -119,7 +121,7 @@ namespace RolePlaying
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.TransparentBlack);
+            //graphics.GraphicsDevice.Clear(Color.TransparentBlack);
 
             base.Draw(gameTime);
         }

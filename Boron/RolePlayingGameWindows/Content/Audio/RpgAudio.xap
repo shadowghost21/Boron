@@ -1,7 +1,7 @@
-Signature = XACT2;
-Version = 16;
-Content Version = 43;
-Release = August 2007;
+Signature = XACT3;
+Version = 17;
+Content Version = 45;
+Release = March 2009;
 
 Options
 {
@@ -161,7 +161,7 @@ Global Settings
         Value = 0.000000;
         Initial Value = 0.000000;
         Min = 0.000000;
-        Max = 15.000001;
+        Max = 15000.000000;
     }
 
     Variable
@@ -178,7 +178,7 @@ Global Settings
         Value = 0.000000;
         Initial Value = 0.000000;
         Min = 0.000000;
-        Max = 15.000001;
+        Max = 15000.000000;
     }
 
     Variable
@@ -237,7 +237,7 @@ Global Settings
         Name = NormalCompression;
         Xbox Format Tag = 357;
         Target Sample Rate = 48000;
-        Quality = 80;
+        XMA Quality = 80;
         Find Best Quality = 0;
         High Freq Cut = 0;
         Loop = 0;
@@ -911,6 +911,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -958,6 +959,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1005,6 +1007,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1052,6 +1055,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1099,6 +1103,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1145,6 +1150,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1191,6 +1197,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1237,6 +1244,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1283,6 +1291,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1329,6 +1338,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1375,6 +1385,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1421,6 +1432,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1467,6 +1479,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1513,6 +1526,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1559,6 +1573,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1605,6 +1620,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1651,6 +1667,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1697,6 +1714,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1743,6 +1761,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1789,6 +1808,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1835,6 +1855,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1881,6 +1902,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1927,6 +1949,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -1973,6 +1996,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -2020,6 +2044,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -2067,6 +2092,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {
@@ -2113,6 +2139,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
         }
     }
 
@@ -2131,6 +2158,7 @@ Sound Bank
         Track
         {
             Volume = 0;
+            Use Filter = 0;
 
             Play Wave Event
             {

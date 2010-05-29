@@ -33,7 +33,7 @@ namespace RolePlaying
         /// </summary>
         private static AudioManager audioManager = null;
 
-
+      
         #endregion
 
 
@@ -76,7 +76,7 @@ namespace RolePlaying
             try
             {
                 audioEngine = new AudioEngine(settingsFile);
-                waveBank = new WaveBank(audioEngine, waveBankFile);
+                //waveBank = new WaveBank(audioEngine, waveBankFile);
                 soundBank = new SoundBank(audioEngine, soundBankFile);
             }
             catch (NoAudioHardwareException)

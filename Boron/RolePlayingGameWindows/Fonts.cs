@@ -25,7 +25,6 @@ namespace RolePlaying
     {
         #region Fonts
 
-
         private static SpriteFont headerFont;
         public static SpriteFont HeaderFont
         {
