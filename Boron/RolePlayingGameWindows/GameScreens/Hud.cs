@@ -285,122 +285,7 @@ namespace RolePlaying
         /// <param name="position">Position where to draw</param>
         private void DrawCombatPlayerDetails(CombatantPlayer player, Vector2 position)
         {
-            SpriteBatch spriteBatch = screenManager.SpriteBatch;
-
-            PlankState plankState;
-            bool isPortraitActive = false;
-            bool isCharDead = false;
-            Color color;
-
-            portraitPosition.X = position.X + 7f;
-            portraitPosition.Y = position.Y + 7f;
-
-            namePosition.X = position.X + 84f;
-            namePosition.Y = position.Y + 12f;
-
-            levelPosition.X = position.X + 84f;
-            levelPosition.Y = position.Y + 39f;
-
-            detailPosition.X = position.X + 25f;
-            detailPosition.Y = position.Y + 66f;
-
-            position.X -= 2;
-            position.Y -= 4;
-
-            if (player.IsTurnTaken)
-            {
-                plankState = PlankState.CantUse;
-
-                isPortraitActive = false;
-            }
-            else
-            {
-                plankState = PlankState.InActive;
-
-                isPortraitActive = true;
-            }
-
-            if (((CombatEngine.HighlightedCombatant == player) && !player.IsTurnTaken) ||
-                (CombatEngine.PrimaryTargetedCombatant == player) ||
-                (CombatEngine.SecondaryTargetedCombatants.Contains(player)))
-            {
-                plankState = PlankState.Active;
-            }
-
-            if (player.IsDeadOrDying)
-            {
-                isCharDead = true;
-                isPortraitActive = false;
-                plankState = PlankState.CantUse;
-            }
-
-            // Draw Info Slab
-            if (plankState == PlankState.Active)
-            {
-                color = activeNameColor;
-
-                spriteBatch.Draw(activeCharInfoTexture, position, Color.White);
-
-                // Draw Brackets
-                if ((CombatEngine.HighlightedCombatant == player) && !player.IsTurnTaken)
-                {
-                    spriteBatch.Draw(selectionBracketTexture, position, Color.White);
-                }
-
-                if (isPortraitActive &&
-                    (CombatEngine.HighlightedCombatant == player) &&
-                    (CombatEngine.HighlightedCombatant.CombatAction == null) &&
-                    !CombatEngine.IsDelaying)
-                {
-                    position.X += activeCharInfoTexture.Width / 2;
-                    position.X -= combatPopupTexture.Width / 2;
-                    position.Y -= combatPopupTexture.Height;
-                    // Draw Action
-                    DrawActionsMenu(position);
-                }
-            }
-            else if (plankState == PlankState.InActive)
-            {
-                color = inActiveNameColor;
-                spriteBatch.Draw(inActiveCharInfoTexture, position, Color.White);
-            }
-            else
-            {
-                color = Color.Black;
-                spriteBatch.Draw(cantUseCharInfoTexture, position, Color.White);
-            }
-
-            if (isCharDead)
-            {
-                spriteBatch.Draw(deadPortraitTexture, portraitPosition, Color.White);
-            }
-            else
-            {
-                // Draw Player Portrait
-                DrawPortrait(player.Player, portraitPosition, plankState);
-            }
-
-            // Draw Player Name
-            spriteBatch.DrawString(Fonts.PlayerStatisticsFont,
-                player.Player.Name,
-                namePosition, color);
-
-            color = Color.Black;
-            // Draw Player Details
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "Lvl: " + player.Player.CharacterLevel,
-                levelPosition, color);
-
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "HP: " + player.Statistics.HealthPoints +
-                "/" + player.Player.CharacterStatistics.HealthPoints,
-                detailPosition, color);
-
-            detailPosition.Y += 30f;
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "MP: " + player.Statistics.MagicPoints +
-                "/" + player.Player.CharacterStatistics.MagicPoints,
-                detailPosition, color);
+            
         }
 
 
@@ -411,78 +296,7 @@ namespace RolePlaying
         /// <param name="position">Position where to draw</param>
         private void DrawNonCombatPlayerDetails(Player player, Vector2 position)
         {
-            SpriteBatch spriteBatch = screenManager.SpriteBatch;
 
-            PlankState plankState;
-            bool isCharDead = false;
-            Color color;
-
-            portraitPosition.X = position.X + 7f;
-            portraitPosition.Y = position.Y + 7f;
-
-            namePosition.X = position.X + 84f;
-            namePosition.Y = position.Y + 12f;
-
-            levelPosition.X = position.X + 84f;
-            levelPosition.Y = position.Y + 39f;
-
-            detailPosition.X = position.X + 25f;
-            detailPosition.Y = position.Y + 66f;
-
-            position.X -= 2;
-            position.Y -= 4;
-
-            plankState = PlankState.Active;
-
-            // Draw Info Slab
-            if (plankState == PlankState.Active)
-            {
-                color = activeNameColor;
-
-                spriteBatch.Draw(activeCharInfoTexture, position, Color.White);
-            }
-            else if (plankState == PlankState.InActive)
-            {
-                color = inActiveNameColor;
-                spriteBatch.Draw(inActiveCharInfoTexture, position, Color.White);
-            }
-            else
-            {
-                color = Color.Black;
-                spriteBatch.Draw(cantUseCharInfoTexture, position, Color.White);
-            }
-
-            if (isCharDead)
-            {
-                spriteBatch.Draw(deadPortraitTexture, portraitPosition, Color.White);
-            }
-            else
-            {
-                // Draw Player Portrait
-                DrawPortrait(player, portraitPosition, plankState);
-            }
-
-            // Draw Player Name
-            spriteBatch.DrawString(Fonts.PlayerStatisticsFont,
-                player.Name,
-                namePosition, color);
-
-            color = Color.Black;
-            // Draw Player Details
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "Lvl: " + player.CharacterLevel,
-                levelPosition, color);
-
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "HP: " + player.CurrentStatistics.HealthPoints +
-                "/" + player.CharacterStatistics.HealthPoints,
-                detailPosition, color);
-
-            detailPosition.Y += 30f;
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "MP: " + player.CurrentStatistics.MagicPoints +
-                "/" + player.CharacterStatistics.MagicPoints,
-                detailPosition, color);
         }
 
 
@@ -492,21 +306,21 @@ namespace RolePlaying
         private void DrawPortrait(Player player, Vector2 position,
             PlankState plankState)
         {
-            switch (plankState)
-            {
-                case PlankState.Active:
-                    screenManager.SpriteBatch.Draw(player.ActivePortraitTexture,
-                        position, Color.White);
-                    break;
-                case PlankState.InActive:
-                    screenManager.SpriteBatch.Draw(player.InactivePortraitTexture,
-                        position, Color.White);
-                    break;
-                case PlankState.CantUse:
-                    screenManager.SpriteBatch.Draw(player.UnselectablePortraitTexture,
-                        position, Color.White);
-                    break;
-            }
+            //switch (plankState)
+            //{
+            //    case PlankState.Active:
+            //        screenManager.SpriteBatch.Draw(player.ActivePortraitTexture,
+            //            position, Color.White);
+            //        break;
+            //    case PlankState.InActive:
+            //        screenManager.SpriteBatch.Draw(player.InactivePortraitTexture,
+            //            position, Color.White);
+            //        break;
+            //    case PlankState.CantUse:
+            //        screenManager.SpriteBatch.Draw(player.UnselectablePortraitTexture,
+            //            position, Color.White);
+            //        break;
+            //}
         }
 
 
@@ -563,142 +377,17 @@ namespace RolePlaying
             {
                 switch (actionList[highlightedAction])
                 {
-                    case "Attack":
-                        {
-                            ActionText = "Performing a Melee Attack";
-                            CombatEngine.HighlightedCombatant.CombatAction =
-                                new MeleeCombatAction(CombatEngine.HighlightedCombatant);
-                            CombatEngine.HighlightedCombatant.CombatAction.Target =
-                                CombatEngine.FirstEnemyTarget;
-                        }
-                        break;
-
-                    case "Spell":
-                        {
-                            SpellbookScreen spellbookScreen = new SpellbookScreen(
-                                CombatEngine.HighlightedCombatant.Character,
-                                CombatEngine.HighlightedCombatant.Statistics);
-                            spellbookScreen.SpellSelected +=
-                                new SpellbookScreen.SpellSelectedHandler(
-                                spellbookScreen_SpellSelected);
-                            Session.ScreenManager.AddScreen(spellbookScreen);
-                        }
-                        break;
-
-                    case "Item":
-                        {
-                            InventoryScreen inventoryScreen = new InventoryScreen(true);
-                            inventoryScreen.GearSelected +=
-                                new InventoryScreen.GearSelectedHandler(
-                                inventoryScreen_GearSelected);
-                            Session.ScreenManager.AddScreen(inventoryScreen);
-                        }
-                        break;
-
-                    case "Defend":
-                        {
-                            ActionText = "Defending";
-                            CombatEngine.HighlightedCombatant.CombatAction =
-                                new DefendCombatAction(
-                                CombatEngine.HighlightedCombatant);
-                            CombatEngine.HighlightedCombatant.CombatAction.Start();
-                        }
-                        break;
-
-                    case "Flee":
-                        CombatEngine.AttemptFlee();
-                        break;
+                    
                 }
                 return;
             }
         }
+    }
 
 
-        /// <summary>
-        /// Recieves the spell from the Spellbook screen and casts it.
-        /// </summary>
-        void spellbookScreen_SpellSelected(Spell spell)
-        {
-            if (spell != null)
-            {
-                ActionText = "Casting " + spell.Name;
-                CombatEngine.HighlightedCombatant.CombatAction =
-                    new SpellCombatAction(CombatEngine.HighlightedCombatant, spell);
-                if (spell.IsOffensive)
-                {
-                    CombatEngine.HighlightedCombatant.CombatAction.Target =
-                        CombatEngine.FirstEnemyTarget;
-                }
-                else
-                {
-                    CombatEngine.HighlightedCombatant.CombatAction.Target =
-                        CombatEngine.HighlightedCombatant;
-                }
-            }
-        }
 
 
-        /// <summary>
-        /// Receives the item back from the Inventory screen and uses it.
-        /// </summary>
-        void inventoryScreen_GearSelected(Gear gear)
-        {
-            Item item = gear as Item;
-            if (item != null)
-            {
-                ActionText = "Using " + item.Name;
-                CombatEngine.HighlightedCombatant.CombatAction =
-                    new ItemCombatAction(CombatEngine.HighlightedCombatant, item);
-                if (item.IsOffensive)
-                {
-                    CombatEngine.HighlightedCombatant.CombatAction.Target =
-                        CombatEngine.FirstEnemyTarget;
-                }
-                else
-                {
-                    CombatEngine.HighlightedCombatant.CombatAction.Target =
-                        CombatEngine.HighlightedCombatant;
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Draws the combat action menu.
-        /// </summary>
-        /// <param name="position">The position of the menu.</param>
-        private void DrawActionsMenu(Vector2 position)
-        {
-            ActionText = "Choose an Action";
-
-            SpriteBatch spriteBatch = screenManager.SpriteBatch;
-
-            Vector2 arrowPosition;
-            float height = 25f;
-
-            spriteBatch.Draw(combatPopupTexture, position, Color.White);
-
-            position.Y += 21f;
-            arrowPosition = position;
-
-            arrowPosition.X += 10f;
-            arrowPosition.Y += 2f;
-            arrowPosition.Y += height * (int)highlightedAction;
-            spriteBatch.Draw(actionTexture, arrowPosition, Color.White);
-
-            position.Y += 4f;
-            position.X += 50f;
-
-            // Draw Action Text
-            for (int i = 0; i < actionList.Length; i++)
-            {
-                spriteBatch.DrawString(Fonts.GearInfoFont, actionList[i], position,
-                    i == highlightedAction ? selColor : nonSelColor);
-                position.Y += height;
-            }
-        }
 
 
         #endregion
     }
-}

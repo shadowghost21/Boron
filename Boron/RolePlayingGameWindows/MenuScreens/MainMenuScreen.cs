@@ -145,14 +145,7 @@ namespace RolePlaying
         /// </summary>
         void NewGameMenuEntrySelected(object sender, EventArgs e)
         {
-            if (Session.IsActive)
-            {
-                ExitScreen();
-            }
-
-            ContentManager content = ScreenManager.Game.Content;
-            LoadingScreen.Load(ScreenManager, true, new GameplayScreen(
-                content.Load<GameStartDescription>("MainGameDescription")));
+           
         }
 
 
@@ -161,8 +154,7 @@ namespace RolePlaying
         /// </summary>
         void SaveGameMenuEntrySelected(object sender, EventArgs e)
         {
-            ScreenManager.AddScreen(
-                new SaveLoadScreen(SaveLoadScreen.SaveLoadScreenMode.Save));
+            
         }
 
 
@@ -171,11 +163,7 @@ namespace RolePlaying
         /// </summary>
         void LoadGameMenuEntrySelected(object sender, EventArgs e)
         {
-            SaveLoadScreen loadGameScreen =
-                new SaveLoadScreen(SaveLoadScreen.SaveLoadScreenMode.Load);
-            loadGameScreen.LoadingSaveGame += new SaveLoadScreen.LoadingSaveGameHandler(
-                loadGameScreen_LoadingSaveGame);
-            ScreenManager.AddScreen(loadGameScreen);
+            
         }
 
 
@@ -184,32 +172,8 @@ namespace RolePlaying
         /// </summary>
         void loadGameScreen_LoadingSaveGame(SaveGameDescription saveGameDescription)
         {
-            if (Session.IsActive)
-            {
-                ExitScreen();
-            }
-            LoadingScreen.Load(ScreenManager, true,
-                new GameplayScreen(saveGameDescription));
+           
         }
-
-
-        /// <summary>
-        /// Event handler for when the Controls menu entry is selected.
-        /// </summary>
-        void ControlsMenuEntrySelected(object sender, EventArgs e)
-        {
-            ScreenManager.AddScreen(new ControlsScreen());
-        }
-
-
-        /// <summary>
-        /// Event handler for when the Help menu entry is selected.
-        /// </summary>
-        void HelpMenuEntrySelected(object sender, EventArgs e)
-        {
-            ScreenManager.AddScreen(new HelpScreen());
-        }
-
 
         /// <summary>
         /// When the user cancels the main menu,

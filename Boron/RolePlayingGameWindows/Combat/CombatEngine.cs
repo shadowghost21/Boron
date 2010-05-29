@@ -1611,57 +1611,7 @@ namespace RolePlaying
         /// <param name="combatEndState"></param>
         private void EndCombat(CombatEndingState combatEndingState)
         {
-            // go back to the non-combat music
-            AudioManager.PopMusic();
-
-            switch (combatEndingState)
-            {
-                case CombatEndingState.Victory:
-                    int experienceReward = 0;
-                    int goldReward = 0;
-                    List<Gear> gearRewards = new List<Gear>();
-                    List<string> gearRewardNames = new List<string>();
-                    // calculate the rewards from the monsters
-                    foreach (CombatantMonster combatantMonster in monsters)
-                    {
-                        Monster monster = combatantMonster.Monster;
-                        Session.Party.AddMonsterKill(monster);
-                        experienceReward +=
-                            monster.CalculateExperienceReward(Session.Random);
-                        goldReward += monster.CalculateGoldReward(Session.Random);
-                        gearRewardNames.AddRange(
-                            monster.CalculateGearDrop(Session.Random));
-                    }
-                    foreach (string gearRewardName in gearRewardNames)
-                    {
-                        gearRewards.Add(Session.ScreenManager.Game.Content.Load<Gear>(
-                            Path.Combine(@"Gear", gearRewardName)));
-                    }
-                    // add the reward screen
-                    Session.ScreenManager.AddScreen(new RewardsScreen(
-                        RewardsScreen.RewardScreenMode.Combat, experienceReward,
-                        goldReward, gearRewards));
-                    // remove the fixed combat entry, if this wasn't a random fight
-                    if (FixedCombatEntry != null)
-                    {
-                        Session.RemoveFixedCombat(FixedCombatEntry);
-                    }
-                    break;
-
-                case CombatEndingState.Loss: // game over
-                    ScreenManager screenManager = Session.ScreenManager;
-                    // end the session
-                    Session.EndSession();
-                    // add the game-over screen
-                    screenManager.AddScreen(new GameOverScreen());
-                    break;
-
-                case CombatEndingState.Fled:
-                    break;
-            }
-
-            // clear the singleton
-            singleton = null;
+            
         }
 
 

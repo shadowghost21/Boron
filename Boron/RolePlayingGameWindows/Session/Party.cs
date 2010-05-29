@@ -112,7 +112,7 @@ namespace RolePlaying
 
             if ((leveledUpPlayers != null) && (leveledUpPlayers.Count > 0))
             {
-                Session.ScreenManager.AddScreen(new LevelUpScreen(leveledUpPlayers));
+                //Session.ScreenManager.AddScreen(new LevelUpScreen(leveledUpPlayers));
             }
         }
 

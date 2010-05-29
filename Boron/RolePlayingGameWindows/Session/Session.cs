@@ -106,132 +106,22 @@ namespace RolePlaying
         /// <returns>True if anything was encountered, false otherwise.</returns>
         public static bool EncounterTile(Point mapPosition)
         {
-            // look for fixed-combats from the quest
-            if ((singleton.quest != null) &&
-                ((singleton.quest.Stage == Quest.QuestStage.InProgress) ||
-                 (singleton.quest.Stage == Quest.QuestStage.RequirementsMet)))
-            {
-                MapEntry<FixedCombat> fixedCombatEntry =
-                    singleton.quest.FixedCombatEntries.Find(
-                        delegate(WorldEntry<FixedCombat> worldEntry)
-                        {
-                            return
-                                TileEngine.Map.AssetName.EndsWith(
-                                    worldEntry.MapContentName) &&
-                                worldEntry.MapPosition == mapPosition;
-                        });
-                if (fixedCombatEntry != null)
-                {
-                    Session.EncounterFixedCombat(fixedCombatEntry);
-                    return true;
-                }
-            }
-
-            // look for fixed-combats from the map
-            MapEntry<FixedCombat> fixedCombatMapEntry =
-                TileEngine.Map.FixedCombatEntries.Find(
-                    delegate(MapEntry<FixedCombat> mapEntry)
-                    {
-                        return mapEntry.MapPosition == mapPosition;
-                    });
-            if (fixedCombatMapEntry != null)
-            {
-                Session.EncounterFixedCombat(fixedCombatMapEntry);
-                return true;
-            }
-
-            // look for chests from the current quest
-            if (singleton.quest != null)
-            {
-                MapEntry<Chest> chestEntry = singleton.quest.ChestEntries.Find(
-                    delegate(WorldEntry<Chest> worldEntry)
-                    {
-                        return
-                            TileEngine.Map.AssetName.EndsWith(
-                                worldEntry.MapContentName) &&
-                            worldEntry.MapPosition == mapPosition;
-                    });
-                if (chestEntry != null)
-                {
-                    Session.EncounterChest(chestEntry);
-                    return true;
-                }
-            }
-
-            // look for chests from the map
-            MapEntry<Chest> chestMapEntry =
-                TileEngine.Map.ChestEntries.Find(delegate(MapEntry<Chest> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (chestMapEntry != null)
-            {
-                Session.EncounterChest(chestMapEntry);
-                return true;
-            }
-
+           
+            //FOR REFERENCE
             // look for player NPCs from the map
-            MapEntry<Player> playerNpcEntry =
-                TileEngine.Map.PlayerNpcEntries.Find(delegate(MapEntry<Player> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (playerNpcEntry != null)
-            {
-                Session.EncounterPlayerNpc(playerNpcEntry);
-                return true;
-            }
+            //MapEntry<Player> playerNpcEntry =
+            //    TileEngine.Map.PlayerNpcEntries.Find(delegate(MapEntry<Player> mapEntry)
+            //    {
+            //        return mapEntry.MapPosition == mapPosition;
+            //    });
+            //if (playerNpcEntry != null)
+            //{
+            //    Session.EncounterPlayerNpc(playerNpcEntry);
+            //    return true;
+            //}
 
-            // look for quest NPCs from the map
-            MapEntry<QuestNpc> questNpcEntry =
-                TileEngine.Map.QuestNpcEntries.Find(delegate(MapEntry<QuestNpc> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (questNpcEntry != null)
-            {
-                Session.EncounterQuestNpc(questNpcEntry);
-                return true;
-            }
+            return true;
 
-            // look for portals from the map
-            MapEntry<Portal> portalEntry =
-                TileEngine.Map.PortalEntries.Find(delegate(MapEntry<Portal> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (portalEntry != null)
-            {
-                Session.EncounterPortal(portalEntry);
-                return true;
-            }
-
-            // look for inns from the map
-            MapEntry<Inn> innEntry =
-                TileEngine.Map.InnEntries.Find(delegate(MapEntry<Inn> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (innEntry != null)
-            {
-                Session.EncounterInn(innEntry);
-                return true;
-            }
-
-            // look for stores from the map
-            MapEntry<Store> storeEntry =
-                TileEngine.Map.StoreEntries.Find(delegate(MapEntry<Store> mapEntry)
-                {
-                    return mapEntry.MapPosition == mapPosition;
-                });
-            if (storeEntry != null)
-            {
-                Session.EncounterStore(storeEntry);
-                return true;
-            }
-
-            // nothing encountered
-            return false;
         }
 
 
@@ -251,103 +141,6 @@ namespace RolePlaying
                 // start combat
                 CombatEngine.StartNewCombat(fixedCombatEntry);
             }
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering a Chest entry.
-        /// </summary>
-        public static void EncounterChest(MapEntry<Chest> chestEntry)
-        {
-            // check the parameter
-            if ((chestEntry == null) || (chestEntry.Content == null))
-            {
-                throw new ArgumentNullException("chestEntry");
-            }
-
-            // add the chest screen
-            singleton.screenManager.AddScreen(new ChestScreen(chestEntry));
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering a player-NPC entry.
-        /// </summary>
-        public static void EncounterPlayerNpc(MapEntry<Player> playerEntry)
-        {
-            // check the parameter
-            if ((playerEntry == null) || (playerEntry.Content == null))
-            {
-                throw new ArgumentNullException("playerEntry");
-            }
-
-            // add the player-NPC screen
-            singleton.screenManager.AddScreen(new PlayerNpcScreen(playerEntry));
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering a QuestNpc entry.
-        /// </summary>
-        public static void EncounterQuestNpc(MapEntry<QuestNpc> questNpcEntry)
-        {
-            // check the parameter
-            if ((questNpcEntry == null) || (questNpcEntry.Content == null))
-            {
-                throw new ArgumentNullException("questNpcEntry");
-            }
-
-            // add the quest-NPC screen
-            singleton.screenManager.AddScreen(new QuestNpcScreen(questNpcEntry));
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering an Inn entry.
-        /// </summary>
-        public static void EncounterInn(MapEntry<Inn> innEntry)
-        {
-            // check the parameter
-            if ((innEntry == null) || (innEntry.Content == null))
-            {
-                throw new ArgumentNullException("innEntry");
-            }
-
-            // add the inn screen
-            singleton.screenManager.AddScreen(new InnScreen(innEntry.Content));
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering a Store entry.
-        /// </summary>
-        public static void EncounterStore(MapEntry<Store> storeEntry)
-        {
-            // check the parameter
-            if ((storeEntry == null) || (storeEntry.Content == null))
-            {
-                throw new ArgumentNullException("storeEntry");
-            }
-
-            // add the store screen
-            singleton.screenManager.AddScreen(new StoreScreen(storeEntry.Content));
-        }
-
-
-        /// <summary>
-        /// Performs the actions associated with encountering a Portal entry.
-        /// </summary>
-        public static void EncounterPortal(MapEntry<Portal> portalEntry)
-        {
-            // check the parameter
-            if ((portalEntry == null) || (portalEntry.Content == null))
-            {
-                throw new ArgumentNullException("portalEntry");
-            }
-
-            // change to the new map
-            ChangeMap(portalEntry.Content.DestinationMapContentName,
-                portalEntry.Content);
         }
 
 
@@ -454,119 +247,7 @@ namespace RolePlaying
         /// </summary>
         public void UpdateQuest()
         {
-            // check the singleton's state to see if we should care about quests
-            if ((party == null) || (questLine == null))
-            {
-                return;
-            }
-
-            // if we don't have a quest, then take the next one from teh list
-            if ((quest == null) && (questLine.Quests.Count > 0) &&
-                !Session.IsQuestLineComplete)
-            {
-                quest = questLine.Quests[currentQuestIndex];
-                quest.Stage = Quest.QuestStage.NotStarted;
-                // clear the monster-kill record
-                party.MonsterKills.Clear();
-                // clear the modified-quest lists
-                modifiedQuestChests.Clear();
-                removedQuestChests.Clear();
-                removedQuestFixedCombats.Clear();
-            }
-
-            // handle quest-stage transitions
-            if ((quest != null) && !Session.IsQuestLineComplete)
-            {
-                switch (quest.Stage)
-                {
-                    case Quest.QuestStage.NotStarted:
-                        // start the new quest
-                        quest.Stage = Quest.QuestStage.InProgress;
-                        if (!quest.AreRequirementsMet)
-                        {
-                            // show the announcement of the quest and the requirements
-                            ScreenManager.AddScreen(new QuestLogScreen(quest));
-                        }
-                        break;
-
-                    case Quest.QuestStage.InProgress:
-                        // update monster requirements
-                        foreach (QuestRequirement<Monster> monsterRequirement in
-                            quest.MonsterRequirements)
-                        {
-                            monsterRequirement.CompletedCount = 0;
-                            Monster monster = monsterRequirement.Content;
-                            if (party.MonsterKills.ContainsKey(monster.AssetName))
-                            {
-                                monsterRequirement.CompletedCount =
-                                    party.MonsterKills[monster.AssetName];
-                            }
-                        }
-                        // update gear requirements
-                        foreach (QuestRequirement<Gear> gearRequirement in
-                            quest.GearRequirements)
-                        {
-                            gearRequirement.CompletedCount = 0;
-                            foreach (ContentEntry<Gear> entry in party.Inventory)
-                            {
-                                if (entry.Content == gearRequirement.Content)
-                                {
-                                    gearRequirement.CompletedCount += entry.Count;
-                                }
-                            }
-                        }
-                        // check to see if the requirements have been met
-                        if (quest.AreRequirementsMet)
-                        {
-                            // immediately remove the gear
-                            foreach (QuestRequirement<Gear> gearRequirement in
-                                quest.GearRequirements)
-                            {
-                                Gear gear = gearRequirement.Content;
-                                party.RemoveFromInventory(gear,
-                                    gearRequirement.Count);
-                            }
-                            // check to see if there is a destination
-                            if (String.IsNullOrEmpty(
-                                quest.DestinationMapContentName))
-                            {
-                                // complete the quest
-                                quest.Stage = Quest.QuestStage.Completed;
-                                // show the completion dialogue
-                                if (!String.IsNullOrEmpty(quest.CompletionMessage))
-                                {
-                                    DialogueScreen dialogueScreen = new DialogueScreen();
-                                    dialogueScreen.TitleText = "Quest Complete";
-                                    dialogueScreen.BackText = String.Empty;
-                                    dialogueScreen.DialogueText =
-                                        quest.CompletionMessage;
-                                    ScreenManager.AddScreen(dialogueScreen);
-                                }
-                            }
-                            else
-                            {
-                                quest.Stage = Quest.QuestStage.RequirementsMet;
-                                // remind the player about the destination
-                                screenManager.AddScreen(new QuestLogScreen(quest));
-                            }
-                        }
-                        break;
-
-                    case Quest.QuestStage.RequirementsMet:
-                        break;
-
-                    case Quest.QuestStage.Completed:
-                        // show the quest rewards screen
-                        RewardsScreen rewardsScreen =
-                            new RewardsScreen(RewardsScreen.RewardScreenMode.Quest,
-                            Quest.ExperienceReward, Quest.GoldReward, Quest.GearRewards);
-                        screenManager.AddScreen(rewardsScreen);
-                        // advance to the next quest
-                        currentQuestIndex++;
-                        quest = null;
-                        break;
-                }
-            }
+           
         }
 
 

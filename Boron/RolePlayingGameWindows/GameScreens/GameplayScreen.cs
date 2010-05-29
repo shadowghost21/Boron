@@ -1,4 +1,4 @@
-#region File Description
+﻿#region File Description
 //-----------------------------------------------------------------------------
 // GameplayScreen.cs
 //
@@ -73,8 +73,8 @@ namespace RolePlaying
         void GameplayScreen_Exiting(object sender, EventArgs e)
         {
             // make sure the session is ending
-            // -- EndSession must be re-entrant safe, as the EndSession may be 
-            //    making this screen close itself
+            // -- EndSession must be re-entrant safe, as the EndSession may be
+            // making this screen close itself
             Session.EndSession();
         }
 
@@ -139,7 +139,7 @@ namespace RolePlaying
             {
                 // add a confirmation message box
                 const string message =
-                    "Are you sure you want to exit?  All unsaved progress will be lost.";
+                    "Are you sure you want to exit? All unsaved progress will be lost.";
                 MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
                 confirmExitMessageBox.Accepted += ConfirmExitMessageBoxAccepted;
                 ScreenManager.AddScreen(confirmExitMessageBox);
@@ -149,14 +149,14 @@ namespace RolePlaying
             if (!CombatEngine.IsActive &&
                 InputManager.IsActionTriggered(InputManager.Action.CharacterManagement))
             {
-                ScreenManager.AddScreen(new StatisticsScreen(Session.Party.Players[0]));
+                //ScreenManager.AddScreen(new StatisticsScreen(Session.Party.Players[0]));
                 return;
             }
         }
 
 
         /// <summary>
-        /// Event handler for when the user selects Yes 
+        /// Event handler for when the user selects Yes
         /// on the "Are you sure?" message box.
         /// </summary>
         void ConfirmExitMessageBoxAccepted(object sender, EventArgs e)

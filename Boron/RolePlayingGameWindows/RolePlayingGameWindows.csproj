@@ -69,34 +69,10 @@
     <Compile Include="Combat\Actions\SpellCombatAction.cs" />
     <Compile Include="Combat\Actions\MeleeCombatAction.cs" />
     <Compile Include="Fonts.cs" />
-    <Compile Include="GameScreens\ChestScreen.cs" />
-    <Compile Include="GameScreens\DialogueScreen.cs" />
-    <Compile Include="GameScreens\EquipmentScreen.cs" />
-    <Compile Include="GameScreens\InventoryScreen.cs" />
-    <Compile Include="GameScreens\LevelUpScreen.cs" />
-    <Compile Include="GameScreens\ListScreen.cs" />
-    <Compile Include="GameScreens\PlayerNpcScreen.cs" />
-    <Compile Include="GameScreens\GameOverScreen.cs" />
     <Compile Include="GameScreens\GameplayScreen.cs" />
-    <Compile Include="GameScreens\InnScreen.cs" />
-    <Compile Include="GameScreens\NpcScreen.cs" />
-    <Compile Include="GameScreens\PlayerSelectionScreen.cs" />
-    <Compile Include="GameScreens\QuestDetailsScreen.cs" />
-    <Compile Include="GameScreens\QuestLogScreen.cs" />
-    <Compile Include="GameScreens\QuestNpcScreen.cs" />
-    <Compile Include="GameScreens\RewardsScreen.cs" />
-    <Compile Include="GameScreens\SpellbookScreen.cs" />
-    <Compile Include="GameScreens\StatisticsScreen.cs" />
     <Compile Include="GameScreens\Hud.cs" />
-    <Compile Include="GameScreens\StoreBuyScreen.cs" />
-    <Compile Include="GameScreens\StoreScreen.cs" />
-    <Compile Include="GameScreens\StoreSellScreen.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="MenuScreens\IntroScreen.cs" />
-    <Compile Include="MenuScreens\ControlsScreen.cs" />
-    <Compile Include="MenuScreens\HelpScreen.cs" />
-    <Compile Include="MenuScreens\LoadingScreen.cs" />
-    <Compile Include="MenuScreens\SaveLoadScreen.cs" />
     <Compile Include="MenuScreens\MainMenuScreen.cs" />
     <Compile Include="MenuScreens\MessageBoxScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,7 +98,6 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Content Include="Documentation\Role-Playing_Game_Starter_Kit.htm" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">
@@ -177,6 +152,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documentation\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" Condition="" />
