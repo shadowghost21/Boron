@@ -99,7 +99,7 @@ namespace RolePlaying
         public override void LoadContent()
         {
             ContentManager content = ScreenManager.Game.Content;
-            loadingTexture = content.Load<Texture2D>(@"Textures\MainMenu\LoadingPause");
+            loadingTexture = content.Load<Texture2D>(@"Textures\MainMenu\splash");
             loadingBlackTexture =
                 content.Load<Texture2D>(@"Textures\GameScreens\FadeScreen");
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;

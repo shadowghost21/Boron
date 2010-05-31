@@ -104,7 +104,7 @@ namespace RolePlaying
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
 
             backgroundTexture =
-                content.Load<Texture2D>(@"Textures\GameScreens\PopupScreen");
+                content.Load<Texture2D>(@"Textures\GameScreens\QuestDescription");
             backIconTexture =
                 content.Load<Texture2D>(@"Textures\Buttons\BButton");
             scrollTexture =
