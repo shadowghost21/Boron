@@ -62,7 +62,7 @@ namespace RolePlaying
         private int startIndex;
         private int endIndex;
         private int maxLines;
-
+        const int wrapWidth = 700;
 
         #endregion
 
@@ -91,7 +91,7 @@ namespace RolePlaying
 
             AddStrings(this.quest.Name,
                 Fonts.BreakTextIntoList(this.quest.Description,
-                Fonts.DescriptionFont, 715), GetRequirements(this.quest));
+                Fonts.DescriptionFont, wrapWidth), GetRequirements(this.quest));
         }
 
 
@@ -171,8 +171,7 @@ namespace RolePlaying
 
             // Title text
             titleString = name;
-            titlePosition.X = (screenSize.X -
-                Fonts.HeaderFont.MeasureString(titleString).X) / 2;
+            titlePosition.X = (screenSize.X - Fonts.HeaderFont.MeasureString(titleString).X) / 2;
             titlePosition.Y = backgroundPosition.Y + 70f;
 
             currentDialogue.Clear();

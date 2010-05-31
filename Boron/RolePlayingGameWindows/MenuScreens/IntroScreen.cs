@@ -22,7 +22,7 @@ namespace RolePlaying.MenuScreens
        {
            ContentManager content = ScreenManager.Game.Content;
         
-           intro = content.Load<Video>(@"Video\intro");
+           intro = content.Load<Video>(@"Video\firstplay");
        }
 
        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)

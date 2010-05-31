@@ -1014,7 +1014,12 @@ Content\Textures\HUD\metalcontainer2.xnb
 Content\Textures\HUD\lowerthird3.xnb
 Content\Textures\HUD\hud2.xnb
 Content\Textures\HUD\hud3.xnb
+Content\Fonts\smallCopperPlate.xnb
+Content\Video\firstplay.xnb
+Content\Video\loopmenu3.xnb
 Content\Video\intro.wmv
+Content\Video\firstplay.wmv
+Content\Video\loopmenu3.wmv
 Content\Audio\RPGAudio.xgs
 Content\Audio\Wave Bank.xwb
 Content\Audio\Sound Bank.xsb

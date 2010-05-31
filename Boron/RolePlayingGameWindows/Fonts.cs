@@ -135,7 +135,7 @@ namespace RolePlaying
             captionFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
             damageFont = contentManager.Load<SpriteFont>("Fonts/DamageFont");
             debugFont = contentManager.Load<SpriteFont>("Fonts/DebugFont");
-            descriptionFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
+            descriptionFont = contentManager.Load<SpriteFont>(@"Fonts\smallCopperPlate");
             gearInfoFont = contentManager.Load<SpriteFont>(@"Fonts\bodyFont");
             headerFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");
             hudDetailFont = contentManager.Load<SpriteFont>(@"Fonts\copperPlate");

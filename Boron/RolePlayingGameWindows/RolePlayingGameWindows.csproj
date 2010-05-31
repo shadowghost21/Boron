@@ -70,6 +70,7 @@
     <Compile Include="Combat\Actions\MeleeCombatAction.cs" />
     <Compile Include="Fonts.cs" />
     <Compile Include="GameScreens\ChestScreen.cs" />
+    <Compile Include="GameScreens\ExtrasScreen.cs" />
     <Compile Include="GameScreens\DialogueScreen.cs" />
     <Compile Include="GameScreens\EquipmentScreen.cs" />
     <Compile Include="GameScreens\InventoryScreen.cs" />

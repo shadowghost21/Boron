@@ -27,7 +27,9 @@ namespace RolePlaying
         
         private Texture2D selectTexture;
         private Vector2 selectPosition;
-        
+        Video mainLoop;
+        VideoPlayer mainMenuLoopPlayer;
+
         #endregion
 
         #region Menu Entries
@@ -47,7 +49,7 @@ namespace RolePlaying
         public MainMenuScreen()
             : base()
         {
-                  
+            mainMenuLoopPlayer = new VideoPlayer();
         }
 
 
@@ -61,8 +63,12 @@ namespace RolePlaying
             ContentManager content = ScreenManager.Game.Content;
             SpriteFont copperPlate = ScreenManager.Game.Content.Load<SpriteFont>(@"Fonts\copperPlate");
             float x = 110*1.5f;
-            float y = 110*1.5f;
+            float y = 200*1.5f;
             
+
+            //Load the background loop
+            mainLoop = content.Load<Video>(@"Video\loopmenu3");
+
             // add the New Game entry
             newGameMenuEntry = new MenuEntry("Start");
             newGameMenuEntry.Description = "Start the game";
@@ -78,7 +84,7 @@ namespace RolePlaying
             optionsMenuEntry.Description = "Configure the game";
             optionsMenuEntry.Font = copperPlate;
             optionsMenuEntry.Position = new Vector2(x, y += 36 * 1.5f);
-            //optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             MenuEntries.Add(optionsMenuEntry);
 
             //Add extras entry
@@ -86,7 +92,7 @@ namespace RolePlaying
             extrasMenuEntry.Description = "Gaming goodies";
             extrasMenuEntry.Font = copperPlate;
             extrasMenuEntry.Position = new Vector2(x, y += 36 * 1.5f);
-            //extrasMenuEntry.Selected += ExtrasMenuEntrySelected;
+            extrasMenuEntry.Selected += ExtrasMenuEntrySelected;
             MenuEntries.Add(extrasMenuEntry);
 
             // create the Exit menu entry
@@ -155,6 +161,31 @@ namespace RolePlaying
                 content.Load<GameStartDescription>("MainGameDescription")));
         }
 
+
+        void OptionsMenuEntrySelected(object sender, EventArgs e)
+        {
+            if (Session.IsActive)
+            {
+                ExitScreen();
+            }
+
+            ContentManager content = ScreenManager.Game.Content;
+            //ScreenManager.AddScreen
+            //LoadingScreen.Load(ScreenManager, true, new GameplayScreen(
+            //    content.Load<GameStartDescription>("MainGameDescription")));
+        }
+
+        void ExtrasMenuEntrySelected(object sender, EventArgs e)
+        {
+            if (Session.IsActive)
+            {
+                ExitScreen();
+            }
+
+            ContentManager content = ScreenManager.Game.Content;
+            //LoadingScreen.Load(ScreenManager, true, new GameplayScreen(
+            //    content.Load<GameStartDescription>("MainGameDescription")));
+        }
 
         /// <summary>
         /// Event handler for when the Save Game menu entry is selected.
@@ -258,6 +289,16 @@ namespace RolePlaying
 
             spriteBatch.Begin();
 
+            // Render the video in it's orginal resolution to the screen using SpriteBatch
+            if (mainMenuLoopPlayer.State == MediaState.Playing)
+            {
+                spriteBatch.Draw(mainMenuLoopPlayer.GetTexture(), new Rectangle(0, 0, ScreenManager.GraphicsDevice.Viewport.Width, ScreenManager.GraphicsDevice.Viewport.Height), Color.White);
+            }
+            else
+            {
+                mainMenuLoopPlayer.Play(mainLoop);
+            }
+
             // draw the background images
             
             // Draw each menu entry in turn.
@@ -267,6 +308,8 @@ namespace RolePlaying
                 bool isSelected = IsActive && (i == selectedEntry);
                 menuEntry.Draw(this, isSelected, gameTime);
             }
+
+
 
             
             spriteBatch.End();
