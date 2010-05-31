@@ -1011,6 +1011,9 @@ Content\Fonts\bodyFont.xnb
 Content\Textures\MainMenu\confirm3.xnb
 Content\Textures\HUD\lowerthird.xnb
 Content\Textures\HUD\metalcontainer2.xnb
+Content\Textures\HUD\lowerthird3.xnb
+Content\Textures\HUD\hud2.xnb
+Content\Textures\HUD\hud3.xnb
 Content\Video\intro.wmv
 Content\Audio\RPGAudio.xgs
 Content\Audio\Wave Bank.xwb

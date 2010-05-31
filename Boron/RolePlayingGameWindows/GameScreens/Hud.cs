@@ -119,7 +119,7 @@ namespace RolePlaying
             ContentManager content = screenManager.Game.Content;
 
             backgroundHudTexture =
-                content.Load<Texture2D>(@"Textures\HUD\lowerthird");
+                content.Load<Texture2D>(@"Textures\HUD\hud3");
             topHudTexture =
                 content.Load<Texture2D>(@"Textures\HUD\CombatStateInfoStrip");
             activeCharInfoTexture =
@@ -178,7 +178,12 @@ namespace RolePlaying
                 startingInfoPosition.X -= 100f;
             }
 
-            spriteBatch.Draw(backgroundHudTexture, backgroundHudPosition, Color.White);
+            spriteBatch.Draw(backgroundHudTexture, new Rectangle(
+                0, 
+                screenManager.GraphicsDevice.Viewport.Height-screenManager.GraphicsDevice.Viewport.Height, 
+                screenManager.GraphicsDevice.Viewport.Width,
+                screenManager.GraphicsDevice.Viewport.Height),
+                Color.White);
 
             if (CombatEngine.IsActive)
             {
@@ -339,8 +344,6 @@ namespace RolePlaying
             {
                 color = activeNameColor;
 
-                spriteBatch.Draw(activeCharInfoTexture, new Rectangle(0, 0, 205, 138), Color.White);
-
                 // Draw Brackets
                 if ((CombatEngine.HighlightedCombatant == player) && !player.IsTurnTaken)
                 {
@@ -377,30 +380,10 @@ namespace RolePlaying
             else
             {
                 // Draw Player Portrait
-                DrawPortrait(player.Player, portraitPosition, plankState);
+                //(player.Player, portraitPosition, plankState);
             }
 
-            // Draw Player Name
-            spriteBatch.DrawString(Fonts.PlayerStatisticsFont,
-                player.Player.Name,
-                namePosition, color);
-
-            color = Color.Black;
-            // Draw Player Details
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "Lvl: " + player.Player.CharacterLevel,
-                levelPosition, color);
-
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "HP: " + player.Statistics.HealthPoints +
-                "/" + player.Player.CharacterStatistics.HealthPoints,
-                detailPosition, color);
-
-            detailPosition.Y += 30f;
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "MP: " + player.Statistics.MagicPoints +
-                "/" + player.Player.CharacterStatistics.MagicPoints,
-                detailPosition, color);
+           
         }
 
 
@@ -439,7 +422,7 @@ namespace RolePlaying
             {
                 color = activeNameColor;
 
-                spriteBatch.Draw(activeCharInfoTexture, new Rectangle(10, (int)backgroundHudPosition.Y +5, 300, 190), Color.White);
+                //spriteBatch.Draw(activeCharInfoTexture, new Rectangle(10, (int)backgroundHudPosition.Y +5, 300, 190), Color.White);
             }
             else if (plankState == PlankState.InActive)
             {
@@ -459,30 +442,30 @@ namespace RolePlaying
             else
             {
                 // Draw Player Portrait
-                DrawPortrait(player, portraitPosition, plankState);
+               // DrawPortrait(player, portraitPosition, plankState);
             }
 
             // Draw Player Name
-            spriteBatch.DrawString(Fonts.PlayerStatisticsFont,
-                player.Name,
-                namePosition, color);
+            //spriteBatch.DrawString(Fonts.PlayerStatisticsFont,
+              //  player.Name,
+               // namePosition, color);
 
-            color = Color.Black;
+           // color = Color.Black;
             // Draw Player Details
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "Lvl: " + player.CharacterLevel,
-                levelPosition, color);
+           // spriteBatch.DrawString(Fonts.HudDetailFont,
+              //  "Lvl: " + player.CharacterLevel,
+               // levelPosition, color);
 
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "HP: " + player.CurrentStatistics.HealthPoints +
-                "/" + player.CharacterStatistics.HealthPoints,
-                detailPosition, color);
+            //spriteBatch.DrawString(Fonts.HudDetailFont,
+             //   "HP: " + player.CurrentStatistics.HealthPoints +
+              //  "/" + player.CharacterStatistics.HealthPoints,
+              //  detailPosition, color);
 
-            detailPosition.Y += 30f;
-            spriteBatch.DrawString(Fonts.HudDetailFont,
-                "MP: " + player.CurrentStatistics.MagicPoints +
-                "/" + player.CharacterStatistics.MagicPoints,
-                detailPosition, color);
+          //  detailPosition.Y += 30f;
+             //spriteBatch.DrawString(Fonts.HudDetailFont,
+            //    "MP: " + player.CurrentStatistics.MagicPoints +
+               // "/" + player.CharacterStatistics.MagicPoints,
+             //   detailPosition, color);
         }
 
 
